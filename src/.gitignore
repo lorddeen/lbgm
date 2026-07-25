@@ -1,0 +1,5 @@
+#system files for python
+__pycache__
+
+# the playground
+test/
