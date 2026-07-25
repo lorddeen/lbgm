@@ -1,0 +1,61 @@
+{
+"pcb_analog": {
+    "hardware": true,
+    "firmware": false,
+    "software": false,
+    "mechs": true,
+    "valids": true,
+    "docs": true,
+    "common": true
+},
+
+"pcb_mcu": {
+    "hardware": true,
+    "firmware": true,
+    "software": false,
+    "mechs": true,
+    "valids": true,
+    "docs": true,
+    "common": true
+},
+
+"pcb_mpu": {
+    "hardware": true,
+    "firmware": true,
+    "software": true,
+    "mechs": true,
+    "valids": true,
+    "docs": true,
+    "common": true
+},
+
+"cable": {
+    "hardware": true,
+    "firmware": false,
+    "software": false,
+    "mechs": true,
+    "valids": true,
+    "docs": true,
+    "common": true
+},
+
+"mech": {
+    "hardware": false,
+    "firmware": false,
+    "software": false,
+    "mechs": true,
+    "valids": true,
+    "docs": true,
+    "common": true
+},
+
+"software": {
+    "hardware": false,
+    "firmware": false,
+    "software": true,
+    "mechs": false,
+    "valids": true,
+    "docs": true,
+    "common": true
+}
+}

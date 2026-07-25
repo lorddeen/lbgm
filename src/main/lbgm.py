@@ -1,7 +1,8 @@
-import os
-import shutil
-import subprocess
-import argparse
+import os # for file and directory management
+import shutil # for file and directory management
+import subprocess # for git management
+import argparse # for command-line argument parsing
+import json # for config file handling
 
 #basic structure of folders in project
 directories = ["hardware", "software", "firmware", "docs", "valids", "common"]
@@ -53,27 +54,21 @@ def delete_project_dir(project_name):
 
 
 class Entity():
-    def __init__(self, entity_name, entity_type):
-        self.name = entity_name
-        self.type = entity_type
+    def __init__(self):
+        with open("config.json", "r") as config_file:
+            self.config = json.load(config_file)
 
-    def make_pcb():
-        pass
-
-    def make_cable():
-        pass
-
-    def make_mech():
-        pass
-
-    def make_sw():
-        pass
+    def make_entity(self, entity_name, entity_type):
+        
+        
+        
 
 
 
 
 if __name__ == "__main__":
     # change working directory to the parent directory and then to the test directory
+    os.chdir("..")
     os.chdir("..")
     os.chdir("test")
     print("Current working directory:", os.getcwd())
@@ -87,10 +82,8 @@ if __name__ == "__main__":
     if args.dp:
         delete_project_dir(args.dp)
     if args.ne:
-        entity_name = args.ne
-        entity_type = input("Enter the type of entity (pcb, cable, mech, sw): ")
-        entity = Entity(entity_name, entity_type)
-        print(f"Entity '{entity.name}' of type '{entity.type}' created.")
+        entity = Entity(args.ne, "entity_type_placeholder")  # Replace with actual entity type if needed
+        entity.make_entity(args.ne, "entity_type_placeholder")  # Replace with actual entity type if needed
 
 
 
