@@ -15,7 +15,7 @@ At this moment you only need standard Python 3 packages.
 ### lbgm
 Simple script for CLI which generates folder structure
 
-~~~python lbgm.py -np project_name~~~
+~~~ python lbgm.py -np project_name
 
 gives you folder tree
 
