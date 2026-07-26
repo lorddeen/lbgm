@@ -1,8 +1,6 @@
 {
 "pcb_analog": {
     "hardware": true,
-    "firmware": false,
-    "software": false,
     "mechs": true,
     "valids": true,
     "docs": true,
@@ -12,7 +10,6 @@
 "pcb_mcu": {
     "hardware": true,
     "firmware": true,
-    "software": false,
     "mechs": true,
     "valids": true,
     "docs": true,
@@ -31,8 +28,6 @@
 
 "cable": {
     "hardware": true,
-    "firmware": false,
-    "software": false,
     "mechs": true,
     "valids": true,
     "docs": true,
@@ -40,9 +35,6 @@
 },
 
 "mech": {
-    "hardware": false,
-    "firmware": false,
-    "software": false,
     "mechs": true,
     "valids": true,
     "docs": true,
@@ -50,10 +42,7 @@
 },
 
 "software": {
-    "hardware": false,
-    "firmware": false,
     "software": true,
-    "mechs": false,
     "valids": true,
     "docs": true,
     "common": true

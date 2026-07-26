@@ -1,4 +1,5 @@
 import os # for file and directory management
+from pathlib import Path
 import shutil # for file and directory management
 import subprocess # for git management
 import argparse # for command-line argument parsing
@@ -12,7 +13,7 @@ def parse_arguments():
     parser = argparse.ArgumentParser(description="Utility to  manage monorepo hardware projects.")
     parser.add_argument("--mp", type=str, help="Name of the project directory to create.")
     parser.add_argument("--dp", type=str, help="Name of the project directory to delete.")
-    parser.add_argument("--ne", type=str, help="Name of the new entity to create.")
+    parser.add_argument("--me", type=str, help="Name of the new entity to create.")
     args = parser.parse_args()
     return args
 
@@ -55,19 +56,33 @@ def delete_project_dir(project_name):
 
 class Entity():
     def __init__(self):
-        with open("config.json", "r") as config_file:
-            self.config = json.load(config_file)
+        try:
+            config_path = Path(__file__).resolve().parent.parent / "configs" / "entities.json"
+            with open(config_path, "r") as config_file:
+                self.config = json.load(config_file)
+        except FileNotFoundError as e:
+            print(e)
 
-    def make_entity(self, entity_name, entity_type):
+    def make_entity(self, project_name, entity_name, entity_type):
+        try:
+            for directory in self.config[entity_type]:
+                if directory:
+                    if os.path.isdir(f"{project_name}/{directory}/{entity_name}"):
+                        print(f"Entity {entity_name} in directory {directory} of project {project_name} already established.")
+                    else:
+                        os.makedirs(os.path.join(project_name, directory, entity_name))
+                        print(f"Established entity {entity_name} in directory {directory} of project {project_name}")
+        except Exception as e:
+            print(f"Error ocured while creating entity {entity_name} in directory {directory}: {e}")
+
         
 
         
         
 if __name__ == "__main__":
     # change working directory to the parent directory and then to the test directory
-    os.chdir("..")
-    os.chdir("..")
-    os.chdir("test")
+    os.chdir("../../test")
+
     print("Current working directory:", os.getcwd())
 
     # parse command-line arguments
@@ -75,12 +90,21 @@ if __name__ == "__main__":
 
     # create or delete project directory based on the provided arguments
     if args.mp:
-        make_project_dir(args.mp)
+        project_name = args.mp
+        make_project_dir(project_name)
     if args.dp:
-        delete_project_dir(args.dp)
-    if args.ne:
-        entity = Entity(args.ne, "entity_type_placeholder")  # Replace with actual entity type if needed
-        entity.make_entity(args.ne, "entity_type_placeholder")  # Replace with actual entity type if needed
+        project_name = args.dp
+        delete_project_dir(project_name)
+    if args.me:
+        entity = Entity()
+
+        if not args.mp:
+            project_name = input("Enter the name of existing project")
+
+        entity_type = args.me
+        entity_name = input("Enter the name of the new entity: ")
+
+        entity.make_entity(project_name, entity_name, entity_type)  # Replace with actual entity type if needed
 
 
 
