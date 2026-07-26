@@ -34,3 +34,18 @@ python lbgm.py -dp project_name
 ```
 
 deletes the folder tree.
+
+```
+python lbgm.py -me entity_type 
+```
+
+makes folders of specific name for every entity.
+
+## Entities
+Entity is a part of project specified with its physical or nonphysical parameters. 
+* pcb_analog - pcb without any form of coding needed.
+* pcb_mcu - pcb with microcontroler (avr or stm32 for example)
+* pcb_mpu - with microprocessor or SoC (Raspberry Pi for example). May include microrontrolers as well.
+* cable - specification of cables connecting diferrent systems.
+* software - mobile or desktop app for control of device
+* mech - mechanical part like enclosure
