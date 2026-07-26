@@ -59,13 +59,9 @@ class Entity():
             self.config = json.load(config_file)
 
     def make_entity(self, entity_name, entity_type):
+
         
         
-        
-
-
-
-
 if __name__ == "__main__":
     # change working directory to the parent directory and then to the test directory
     os.chdir("..")
