@@ -3,7 +3,7 @@
 Management toolkit to manage your smallscale electronics project.
 
 ## Functionality
-At this moment it manages folder structure.
+At this moment it manages folder structure and can check git status.
 
 
 ## Dependencies
@@ -49,3 +49,11 @@ Entity is a part of project specified with its physical or nonphysical parameter
 * cable - specification of cables connecting diferrent systems.
 * software - mobile or desktop app for control of device
 * mech - mechanical part like enclosure
+
+## Git
+Git support is planed. At this moment onlygit status is implemented.
+```
+python lbgm.py --git status
+```
+
+gives you stdout for working directory.
