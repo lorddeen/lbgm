@@ -14,7 +14,7 @@ def parse_arguments():
     parser.add_argument("--mp", type=str, help="Name of the project directory to create.")
     parser.add_argument("--dp", type=str, help="Name of the project directory to delete.")
     parser.add_argument("--me", type=str, help="Name of the new entity to create.")
-    parser.add_argument("--git", type=str, help="command of git")
+    parser.add_argument("--git", type=str, help="Command for git")
     args = parser.parse_args()
     return args
 
@@ -77,7 +77,7 @@ class Entity():
             print(f"Error ocured while creating entity {entity_name} in directory {directory}: {e}")
 
 class Git_manager():
-    def status(path):
+    def status():
         state=subprocess.run(["git","status"],stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
         return state
 
@@ -85,6 +85,8 @@ class Git_manager():
         
 if __name__ == "__main__":
     # change working directory to the parent directory and then to the test directory
+    with 
+
     os.chdir("../../test")
 
     print("Current working directory:", os.getcwd())
