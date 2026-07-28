@@ -85,7 +85,7 @@ class Git_manager():
         
 if __name__ == "__main__":
     # change working directory to the parent directory and then to the test directory
-    with 
+  
 
     os.chdir("../../test")
 
