@@ -35,6 +35,9 @@ def make_project_dir(project_name):
                 print(f"Directory {directory} already exists.")
             else:
                 os.makedirs(os.path.join(project_name, directory), exist_ok=True)
+                if directory == "common":
+                    with open(os.path.join(project_name, directory, "project_definitions.json"), "w") as file:
+                        json.dump({" project_name": project_name}, file)
 
     except Exception as e:
         print(f"Error 2 occurred while creating project directory: {e}")
@@ -75,6 +78,17 @@ class Entity():
                         print(f"Established entity {entity_name} in directory {directory} of project {project_name}")
         except Exception as e:
             print(f"Error ocured while creating entity {entity_name} in directory {directory}: {e}")
+
+    def add_to_project_list(self, project_name, entity_name, entity_type):
+        print(os.getcwd())
+        with open("/common/project_definitions.json", "r") as file:
+            project_definitions = json.load(file)
+        if project_name not in project_definitions:
+            project_definitions[project_name] = []
+        project_definitions[project_name].append({entity_name: {"type": entity_type}})
+        with open("common/project_definitions.json", "w") as file:
+            file.write(json.dumps(project_definitions))
+
 
 class Git_manager():
 
@@ -148,6 +162,8 @@ if __name__ == "__main__":
     if args.dp:
         project_name = args.dp
         delete_project_dir(project_name)
+
+# creating entity based on the provided arguments
     if args.me:
         entity = Entity()
 
@@ -158,6 +174,7 @@ if __name__ == "__main__":
         entity_name = input("Enter the name of the new entity: ")
 
         entity.make_entity(project_name, entity_name, entity_type)  # Replace with actual entity type if needed
+        entity.add_to_project_list(project_name, entity_name, entity_type)
 
     if args.git:
         git=Git_manager()
