@@ -77,9 +77,56 @@ class Entity():
             print(f"Error ocured while creating entity {entity_name} in directory {directory}: {e}")
 
 class Git_manager():
-    def status():
+
+    def __init__(self):
+        self.command = None
+
+
+    def status(self):
         state=subprocess.run(["git","status"],stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
         return state
+
+    def commit(self):
+        try:
+            message = input("Enter commit message: ")
+            subprocess.run(["git", "add", "."], check=True)
+            state = subprocess.run(["git", "commit", "-m", message], check=True)
+            print("Changes committed successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Error occurred while committing changes: {e}")
+            return e
+        return state
+
+    def push(self):
+        try:
+            state = subprocess.run(["git", "push"], check=True)
+            print("Changes pushed successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Error occurred while pushing changes: {e}")
+            return e
+        return state
+
+    def pull(self):
+        try:
+            state = subprocess.run(["git", "pull"], check=True)
+            print("Changes pulled successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Error occurred while pulling changes: {e}")
+            return e
+        return state
+
+    
+    def command (command):
+        match command:
+            case "status":
+                return self.status()
+            case "commit":
+                return self.commit()
+            case "push":
+                return self.push()
+            case "pull":
+                return self.pull()
+
 
         
         
