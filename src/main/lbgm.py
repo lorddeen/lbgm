@@ -1,6 +1,6 @@
 import os
 import subprocess
-import project_manager
+from project_manager import ProjectManager, Git_manager, Entity
 import argparse
 
 def parse_arguments():
@@ -26,10 +26,10 @@ if __name__ == "__main__":
     # create or delete project directory based on the provided arguments
     if args.mp:
         project_name = args.mp
-        make_project_dir(project_name)
+        ProjectManager.make_project_dir(project_name)
     if args.dp:
         project_name = args.dp
-        delete_project_dir(project_name)
+        ProjectManager.delete_project_dir(project_name)
 
 # creating entity based on the provided arguments
     if args.me:

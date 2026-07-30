@@ -15,7 +15,7 @@ class ProjectManager:
     def __init__(self):
         pass
 
-    def make_project_dir(self, project_name):
+    def make_project_dir(project_name):
         try:
             if os.path.isdir(project_name):
                 print("Directory"+{project_name}+"already exists")
@@ -36,8 +36,7 @@ class ProjectManager:
                             json.dump({" project_name": project_name}, file)
 
         except Exception as e:
-        print(f"Error 2 occurred while creating project directory: {e}")
-        pass
+            print(f"Error 2 occurred while creating project directory: {e}")
 
 def delete_project_dir(project_name):
     try:
