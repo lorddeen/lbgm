@@ -81,12 +81,15 @@ class Entity():
 
     def add_to_project_list(self, project_name, entity_name, entity_type):
         print(os.getcwd())
-        with open("/common/project_definitions.json", "r") as file:
+        path = f"{os.getcwd()}\{project_name}\common\project_definitions.json"
+        print(path)
+        with open(path, "r") as file:
             project_definitions = json.load(file)
         if project_name not in project_definitions:
             project_definitions[project_name] = []
         project_definitions[project_name].append({entity_name: {"type": entity_type}})
-        with open("common/project_definitions.json", "w") as file:
+
+        with open(path, "w") as file:
             file.write(json.dumps(project_definitions))
 
 
