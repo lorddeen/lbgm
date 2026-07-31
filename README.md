@@ -51,7 +51,7 @@ Entity is a part of project specified with its physical or nonphysical parameter
 * mech - mechanical part like enclosure
 
 ## Git
-Git support is planed. At this moment onlygit status is implemented.
+At this moment lbgm contains status, init, push, pull and add commands. For example...
 ```
 python lbgm.py --git status
 ```
